@@ -1,0 +1,10 @@
+.stage-canvas-wrap {
+  width: 375px;
+  height: 812px;
+  margin: 0 auto;
+  margin-top: 200px;
+}
+.stage-canvas-wrap canvas {
+  width: 100%;
+  height: 100%;
+}

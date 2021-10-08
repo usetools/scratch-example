@@ -1,5 +1,5 @@
-import VM from 'scratch-vm';
-import { SVGRenderer as V2SVGAdapter, BitmapAdapter as V2BitmapAdapter } from 'scratch-svg-renderer'
+import VM from 'scratch-vm/dist/web/scratch-vm';
+import { SVGRenderer as V2SVGAdapter, BitmapAdapter as V2BitmapAdapter } from 'scratch-svg-renderer/dist/web/scratch-svg-renderer'
 import storage from '@src/lib/storage'
 
 const vm = new VM()

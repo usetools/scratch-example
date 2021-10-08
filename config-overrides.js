@@ -2,7 +2,8 @@ const {
   override,
   addWebpackAlias,
   addWebpackPlugin,
-  addWebpackModuleRule,
+  babelInclude,
+  addExternalBabelPlugins,
 } = require('customize-cra');
 const path = require('path');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
@@ -19,26 +20,21 @@ module.exports = override(
       }]
     })
   ),
-  addWebpackModuleRule(
-    {
-        test: /\.js$/,
-        loader: 'babel-loader',
-        include: [
-            /node_modules[\\/]scratch-[^\\/]+[\\/]src/,
-            /node_modules[\\/]pify/,
-            /node_modules[\\/]@vernier[\\/]godirect/
-        ],
-        options: {
-            // Explicitly disable babelrc so we don't catch various config
-            // in much lower dependencies.
-            babelrc: false,
-            plugins: [
-                '@babel/plugin-syntax-dynamic-import',
-                '@babel/plugin-transform-async-to-generator',
-                '@babel/plugin-proposal-object-rest-spread',
-            ],
-            presets: ['@babel/preset-env']
-        }
-    }
-  )
+  addExternalBabelPlugins(
+    '@babel/plugin-syntax-dynamic-import',
+    '@babel/plugin-transform-async-to-generator',
+    '@babel/plugin-proposal-object-rest-spread',
+    'babel-plugin-add-module-exports',
+  ),
+  babelInclude([
+    path.resolve('src'),
+    path.resolve('node_modules/scratch-blocks/src'),
+    path.resolve('node_modules/scratch-render/src'),
+    path.resolve('node_modules/scratch-render-fonts/src'),
+    path.resolve('node_modules/scratch-storage/src'),
+    path.resolve('node_modules/scratch-svg-renderer/src'),
+    path.resolve('node_modules/scratch-vm/src'),
+    path.resolve('node_modules/pify'),
+    path.resolve('node_modules/@vernier/godirect'),
+  ]),
 );

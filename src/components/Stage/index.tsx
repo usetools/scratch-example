@@ -1,17 +1,26 @@
 import React, { useEffect, useRef } from 'react';
 import { useSetState } from 'react-use';
-import Renderer from 'scratch-render';
+import Renderer from 'scratch-render/dist/web/scratch-render';
 import './index.css';
 
 interface StageProps {
   vm: any;
 }
 
+interface StageState {
+  renderer: any;
+  width: number;
+  height: number;
+}
+
 export default function Stage(props: StageProps) {
   const { vm } = props;
   const canvasRef = useRef<any>(null);
-  const [state, setState] = useSetState({
+  const wrapRef = useRef<any>(null);
+  const [state, setState] = useSetState<StageState>({
     renderer: null,
+    width: 0,
+    height: 0
   });
   useEffect(() => {
     const renderer = new Renderer(canvasRef.current);
@@ -22,6 +31,20 @@ export default function Stage(props: StageProps) {
       renderer,
     });
   }, []);
+
+  useEffect(() => {
+    if (state.renderer && wrapRef.current) {
+      const { offsetHeight, offsetWidth } = wrapRef.current;
+      setState({
+        width: offsetWidth,
+        height: offsetHeight,
+      });
+      // 设置canvas画布大小
+      state.renderer.resize(offsetWidth, offsetHeight);
+      // 设置舞台
+      state.renderer.setStageSize(-offsetWidth / 2, offsetWidth / 2, -offsetHeight / 2, offsetHeight / 2);
+    } 
+  }, [state.renderer, wrapRef.current?.offsetWidth]);
   
   function attachMouseEvents (canvas) {
     document.addEventListener('mousemove', onMouseMove);
@@ -67,8 +90,8 @@ export default function Stage(props: StageProps) {
 
   return (
     <>
-      <div className="stage-canvas-wrap">
-        <canvas ref={canvasRef}></canvas> 
+      <div className="stage-canvas-wrap" ref={wrapRef}>
+        <canvas style={{width: state.width, height: state.height}} ref={canvasRef}></canvas> 
       </div>
     </>
   );

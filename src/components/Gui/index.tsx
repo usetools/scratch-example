@@ -14,8 +14,8 @@ function Gui(props) {
   useEffect(() => {
     vm.loadProject(emptyProject);
     vm.start();
-    // const vmManager = new VMManager(vm);
-    // vmManager.attachKeyboardEvents();
+    const vmManager = new VMManager(vm);
+    vmManager.attachKeyboardEvents();
     console.log(vm, emptyProject);
   }, []); 
   return (

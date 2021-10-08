@@ -45,9 +45,8 @@ export default function Block(props: BlockProps) {
   }, [state.scratchBlocks]);
 
   useEffect(() => {
-    if (state.workspace) {
+    if (state?.workspace) {
       attachVM();
-      // vm.start();
     }
   }, [state?.workspace]);
 

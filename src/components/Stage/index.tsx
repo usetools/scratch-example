@@ -1,7 +1,7 @@
-import React, { useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import { useSetState } from 'react-use';
-import Renderer from 'scratch-render/dist/web/scratch-render';
-import './index.css';
+import Renderer from 'scratch-render';
+import './index.less';
 
 interface StageProps {
   vm: any;

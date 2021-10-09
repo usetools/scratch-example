@@ -1,11 +1,11 @@
 import { Row, Col, Layout } from 'antd';
 import { connect } from 'react-redux';
-import Block from '../Block';
-import Stage from '../Stage';
+import { useEffect } from 'react';
 import VMManager from '@src/lib/vm-manager';
 import emptyProject from '@src/lib/empty-project.json';
-import './index.css';
-import { useEffect } from 'react';
+import Block from '../Block';
+import Stage from '../Stage';
+import './index.less';
 
 const { Header, Content } = Layout;
 
@@ -20,7 +20,9 @@ function Gui(props) {
   }, []); 
   return (
     <Layout>
-      <Header></Header>
+      <Header>
+        <div>Scratch Example</div>
+      </Header>
       <Content className="gui-content">
         <Row className="gui-content-row">
           <Col className="gui-content-col" span={10}>

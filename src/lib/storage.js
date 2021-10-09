@@ -1,4 +1,4 @@
-import ScratchStorage from 'scratch-storage/dist/web/scratch-storage'
+import ScratchStorage from 'scratch-storage'
 
 /**
  * Wrapper for ScratchStorage which adds default web sources.

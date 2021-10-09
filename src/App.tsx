@@ -1,7 +1,7 @@
 import { Provider } from 'react-redux';
 import store from '@src/store';
 import Gui from './components/Gui';
-import './App.css';
+import './App.less';
 
 function App() {
   return (

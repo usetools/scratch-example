@@ -2,7 +2,7 @@ import { useEffect, useRef } from 'react';
 import { useSetState } from 'react-use';
 import ScratchBlocks from '@src/lib/blocks';
 import blockOptions from '@src/lib/block-options';
-import './index.css';
+import './index.less';
 
 interface BlockState {
   scratchBlocks: any;

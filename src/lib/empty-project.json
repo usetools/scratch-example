@@ -58,8 +58,8 @@
                   "fields": { },
                   "shadow": false,
                   "topLevel": true,
-                  "x": 99,
-                  "y": 112
+                  "x": 10,
+                  "y": 30 
               },
               ":eQdUoJ?rI[kOl:6fODM": {
                   "opcode": "looks_sayforsecs",

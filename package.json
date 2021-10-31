@@ -1,6 +1,6 @@
 {
   "name": "scratch-example",
-  "version": "v1.0.0",
+  "version": "v1.0.1",
   "private": true,
   "dependencies": {
     "@babel/polyfill": "^7.12.1",
